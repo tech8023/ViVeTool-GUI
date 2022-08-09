@@ -165,13 +165,7 @@ Public Class ScannerUI
                 Dim CopyExAndClose As New RadTaskDialogButton With {
                     .Text = "Copy Exception and Close"
                 }
-                AddHandler CopyExAndClose.Click, New EventHandler(Sub()
-                                                                      Try
-                                                                          My.Computer.Clipboard.SetText(ex.ToString)
-                                                                      Catch clipex As Exception
-                                                                          'Do nothing
-                                                                      End Try
-                                                                  End Sub)
+                AddHandler CopyExAndClose.Click, New EventHandler(Sub() My.Computer.Clipboard.SetText(ex.ToString))
 
                 Dim RTD As New RadTaskDialogPage With {
                         .Caption = " An Exception occurred",
@@ -261,54 +255,32 @@ Public Class ScannerUI
             .RedirectStandardOutput = True 'Enables Redirection of Standard Output
         End With
 
-        Dim RTD_SymChk As New RadTaskDialogPage With {
-                                .Caption = " An Error occurred",
-                                .Heading = "An Error occurred",
-                                .Text = "An Error occurred while downloading the symbol files." & vbNewLine & vbNewLine & "Check if yo have access to symchk.exe and that your Antivirus isn't blocking it.",
-                                .Icon = RadTaskDialogIcon.ShieldErrorRedBar
-                            }
-
         'Get the .pdb files of C:\Windows\*.* - Recursively
-        Try
-            Proc.StartInfo.Arguments = "/r ""C:\Windows"" /oc """ & My.Settings.SymbolPath & """ /cn"
-            Proc.Start()
-            Proc.BeginErrorReadLine()
-            Proc.BeginOutputReadLine()
-            Proc.WaitForExit()
-            Proc.CancelOutputRead()
-            Proc.CancelErrorRead()
-        Catch ex As Exception
-            'Show the Message Box
-            RadTaskDialog.ShowDialog(RTD_SymChk)
-        End Try
+        Proc.StartInfo.Arguments = "/r ""C:\Windows"" /oc """ & My.Settings.SymbolPath & """ /cn"
+        Proc.Start()
+        Proc.BeginErrorReadLine()
+        Proc.BeginOutputReadLine()
+        Proc.WaitForExit()
+        Proc.CancelOutputRead()
+        Proc.CancelErrorRead()
 
         'Get the .pdb files of C:\Program Files\*.* - Recursively
-        Try
-            Proc.StartInfo.Arguments = "/r ""C:\Program Files"" /oc """ & My.Settings.SymbolPath & """ /cn"
-            Proc.Start()
-            Proc.BeginErrorReadLine()
-            Proc.BeginOutputReadLine()
-            Proc.WaitForExit()
-            Proc.CancelOutputRead()
-            Proc.CancelErrorRead()
-        Catch ex As Exception
-            'Show the Message Box
-            RadTaskDialog.ShowDialog(RTD_SymChk)
-        End Try
+        Proc.StartInfo.Arguments = "/r ""C:\Program Files"" /oc """ & My.Settings.SymbolPath & """ /cn"
+        Proc.Start()
+        Proc.BeginErrorReadLine()
+        Proc.BeginOutputReadLine()
+        Proc.WaitForExit()
+        Proc.CancelOutputRead()
+        Proc.CancelErrorRead()
 
         'Get the .pdb files of C:\Program Files (x86)\*.* - Recursively
-        Try
-            Proc.StartInfo.Arguments = "/r ""C:\Program Files (x86)"" /oc """ & My.Settings.SymbolPath & """ /cn"
-            Proc.Start()
-            Proc.BeginErrorReadLine()
-            Proc.BeginOutputReadLine()
-            Proc.WaitForExit()
-            Proc.CancelOutputRead()
-            Proc.CancelErrorRead()
-        Catch ex As Exception
-            'Show the Message Box
-            RadTaskDialog.ShowDialog(RTD_SymChk)
-        End Try
+        Proc.StartInfo.Arguments = "/r ""C:\Program Files (x86)"" /oc """ & My.Settings.SymbolPath & """ /cn"
+        Proc.Start()
+        Proc.BeginErrorReadLine()
+        Proc.BeginOutputReadLine()
+        Proc.WaitForExit()
+        Proc.CancelOutputRead()
+        Proc.CancelErrorRead()
 
         'Disable the current tab and move to the Scan PDB Tab
         Invoke(Sub()
@@ -540,13 +512,7 @@ Public Class ScannerUI
             Dim CopyExAndClose As New RadTaskDialogButton With {
                     .Text = "Copy Exception and Close"
                 }
-            AddHandler CopyExAndClose.Click, New EventHandler(Sub()
-                                                                  Try
-                                                                      My.Computer.Clipboard.SetText(ex.ToString)
-                                                                  Catch clipex As Exception
-                                                                      'Do nothing
-                                                                  End Try
-                                                              End Sub)
+            AddHandler CopyExAndClose.Click, New EventHandler(Sub() My.Computer.Clipboard.SetText(ex.ToString))
 
             Dim RTD As New RadTaskDialogPage With {
                         .Caption = " An Exception occurred",
@@ -591,13 +557,7 @@ Public Class ScannerUI
             Dim CopyExAndClose As New RadTaskDialogButton With {
                     .Text = "Copy Exception and Close"
                 }
-            AddHandler CopyExAndClose.Click, New EventHandler(Sub()
-                                                                  Try
-                                                                      My.Computer.Clipboard.SetText(ex.ToString)
-                                                                  Catch clipex As Exception
-                                                                      'Do nothing
-                                                                  End Try
-                                                              End Sub)
+            AddHandler CopyExAndClose.Click, New EventHandler(Sub() My.Computer.Clipboard.SetText(ex.ToString))
 
             Dim RTD As New RadTaskDialogPage With {
                         .Caption = " An Exception occurred",
